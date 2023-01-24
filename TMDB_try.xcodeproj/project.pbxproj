@@ -20,7 +20,6 @@
 		BE01C2722962A1F40058E414 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE01C2702962A1F40058E414 /* MovieTableViewCell.xib */; };
 		BE01C2742962AA340058E414 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE01C2732962AA340058E414 /* MovieModel.swift */; };
 		BE1A88CA2977AF5E001AE5FE /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */; };
-		BE1A88CC2977B0FA001AE5FE /* PendingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A88CB2977B0FA001AE5FE /* PendingOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +38,6 @@
 		BE01C2702962A1F40058E414 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		BE01C2732962AA340058E414 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		BE1A88CB2977B0FA001AE5FE /* PendingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,23 +70,54 @@
 		BE01C254295C0FE20058E414 /* TMDB_try */ = {
 			isa = PBXGroup;
 			children = (
-				BE01C269295C41750058E414 /* Model.swift */,
-				BE01C26D295C46380058E414 /* MovieViewModel.swift */,
-				BE01C26B295C43490058E414 /* ApiService.swift */,
+				BE34473A297FBF2B00141834 /* App */,
+				BE34473B297FBF3400141834 /* FileSystem */,
+				BE34473D297FBF4A00141834 /* View */,
+				BE34473C297FBF4000141834 /* NetworkSource */,
+			);
+			path = TMDB_try;
+			sourceTree = "<group>";
+		};
+		BE34473A297FBF2B00141834 /* App */ = {
+			isa = PBXGroup;
+			children = (
 				BE01C255295C0FE20058E414 /* AppDelegate.swift */,
 				BE01C257295C0FE20058E414 /* SceneDelegate.swift */,
-				BE01C259295C0FE20058E414 /* ViewController.swift */,
-				BE01C2732962AA340058E414 /* MovieModel.swift */,
-				BE01C25B295C0FE20058E414 /* Main.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BE34473B297FBF3400141834 /* FileSystem */ = {
+			isa = PBXGroup;
+			children = (
 				BE01C25E295C0FE30058E414 /* Assets.xcassets */,
 				BE01C260295C0FE30058E414 /* LaunchScreen.storyboard */,
 				BE01C263295C0FE30058E414 /* Info.plist */,
+			);
+			path = FileSystem;
+			sourceTree = "<group>";
+		};
+		BE34473C297FBF4000141834 /* NetworkSource */ = {
+			isa = PBXGroup;
+			children = (
+				BE01C269295C41750058E414 /* Model.swift */,
+				BE01C2732962AA340058E414 /* MovieModel.swift */,
+				BE01C26D295C46380058E414 /* MovieViewModel.swift */,
+				BE01C26B295C43490058E414 /* ApiService.swift */,
+				BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */,
+			);
+			path = NetworkSource;
+			sourceTree = "<group>";
+		};
+		BE34473D297FBF4A00141834 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE01C259295C0FE20058E414 /* ViewController.swift */,
+				BE01C25B295C0FE20058E414 /* Main.storyboard */,
 				BE01C26F2962A1F40058E414 /* MovieTableViewCell.swift */,
 				BE01C2702962A1F40058E414 /* MovieTableViewCell.xib */,
-				BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */,
-				BE1A88CB2977B0FA001AE5FE /* PendingOperation.swift */,
 			);
-			path = TMDB_try;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +197,6 @@
 				BE01C26C295C43490058E414 /* ApiService.swift in Sources */,
 				BE01C2712962A1F40058E414 /* MovieTableViewCell.swift in Sources */,
 				BE01C256295C0FE20058E414 /* AppDelegate.swift in Sources */,
-				BE1A88CC2977B0FA001AE5FE /* PendingOperation.swift in Sources */,
 				BE01C2742962AA340058E414 /* MovieModel.swift in Sources */,
 				BE01C258295C0FE20058E414 /* SceneDelegate.swift in Sources */,
 				BE01C26A295C41750058E414 /* Model.swift in Sources */,
