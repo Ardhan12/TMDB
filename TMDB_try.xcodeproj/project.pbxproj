@@ -20,6 +20,7 @@
 		BE01C2722962A1F40058E414 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE01C2702962A1F40058E414 /* MovieTableViewCell.xib */; };
 		BE01C2742962AA340058E414 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE01C2732962AA340058E414 /* MovieModel.swift */; };
 		BE1A88CA2977AF5E001AE5FE /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */; };
+		BE34473F298165F700141834 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34473E298165F600141834 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BE01C2702962A1F40058E414 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		BE01C2732962AA340058E414 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		BE34473E298165F600141834 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				BE01C26D295C46380058E414 /* MovieViewModel.swift */,
 				BE01C26B295C43490058E414 /* ApiService.swift */,
 				BE1A88C92977AF5E001AE5FE /* ImageDownloader.swift */,
+				BE34473E298165F600141834 /* NetworkService.swift */,
 			);
 			path = NetworkSource;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE34473F298165F700141834 /* NetworkService.swift in Sources */,
 				BE1A88CA2977AF5E001AE5FE /* ImageDownloader.swift in Sources */,
 				BE01C25A295C0FE20058E414 /* ViewController.swift in Sources */,
 				BE01C26C295C43490058E414 /* ApiService.swift in Sources */,

@@ -9,28 +9,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private let pendingOperation = PendingOperation()
+//    private let pendingOperation = PendingOperation()
+    
+    private var movies: [Movie] = []
+    
     @IBOutlet weak var MovieTableView: UITableView!
-    var apiservice = ApiService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MovieTableView.dataSource = self
         MovieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "movieTableViewCell" )
-        
-        apiservice.getPopularMoviesData{ (result) in
-            print(result)
-        }
     }
     
-    fileprivate func startOperations(movie: MovieFilm, indexPath: IndexPath){
+    fileprivate func startOperations(movie: Movie, indexPath: IndexPath){
         if movie.state == .new {
             startDownload(movie: movie, indexPath: indexPath)
         }
     }
 
-    fileprivate func startDownload(movie: MovieFilm, indexPath: IndexPath){
+    fileprivate func startDownload(movie: Movie, indexPath: IndexPath){
         guard pendingOperation.downloadInprogress[indexPath] == nil else { return }
         
         let downloader = ImageDownloader(movie: movie)
