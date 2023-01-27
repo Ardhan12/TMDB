@@ -9,9 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-//    private let pendingOperation = PendingOperation()
-    
-    private var movies: [Movie] = []
     
     @IBOutlet weak var MovieTableView: UITableView!
     
@@ -20,29 +17,6 @@ class ViewController: UIViewController {
         
         MovieTableView.dataSource = self
         MovieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "movieTableViewCell" )
-    }
-    
-    fileprivate func startOperations(movie: Movie, indexPath: IndexPath){
-        if movie.state == .new {
-            startDownload(movie: movie, indexPath: indexPath)
-        }
-    }
-
-    fileprivate func startDownload(movie: Movie, indexPath: IndexPath){
-        guard pendingOperation.downloadInprogress[indexPath] == nil else { return }
-        
-        let downloader = ImageDownloader(movie: movie)
-        
-        downloader.completionBlock = {
-            if downloader.isCancelled {return}
-            DispatchQueue.main.async {
-                self.pendingOperation.downloadInprogress.removeValue(forKey: indexPath)
-                self.MovieTableView.reloadRows(at: [indexPath], with: .automatic)
-            }
-        }
-        
-        pendingOperation.downloadInprogress[indexPath] = downloader
-        pendingOperation.downloadQueue.addOperation(downloader)
     }
 }
 
@@ -54,6 +28,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "movieTableViewCell", for: indexPath) as? MovieTableViewCell {
+            
             let movie = movies[indexPath.row]
             cell.movieTitle.text = movie.title
             cell.movieImage.image = movie.image
@@ -61,8 +36,7 @@ extension ViewController: UITableViewDataSource {
             if movie.state == .new {
                 cell.indicatorLoading.isHidden = false
                 cell.indicatorLoading.startAnimating()
-                
-                startOperations(movie: movie, indexPath: indexPath)
+                startDownload(movie: movie, indexPath: indexPath)
             } else {
                 cell.indicatorLoading.stopAnimating()
                 cell.indicatorLoading.isHidden = true
@@ -73,9 +47,24 @@ extension ViewController: UITableViewDataSource {
         } else {
             return UITableViewCell()
         }
-        
     }
     
+    fileprivate func startDownload(movie: Movie, indexPath: IndexPath) {
+        let imageDownloader = ImageDownloader()
+        if movie.state == .new {
+          Task {
+            do {
+              let image = try await imageDownloader.downloadImage(url: movie.poster)
+              movie.state = .downloaded
+              movie.image = image
+              self.MovieTableView.reloadRows(at: [indexPath], with: .automatic)
+            } catch {
+              movie.state = .failed
+              movie.image = nil
+            }
+          }
+        }
+      }
     
 }
 
